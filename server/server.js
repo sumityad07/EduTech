@@ -58,22 +58,8 @@ app.use('/api/v1/sponsor', sponsorRoutes);
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'OK', env: process.env.NODE_ENV }));
 
-// Serve frontend in production
-const path = require('path');
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
-
-    // API 404 handler
-    app.use('/api', (req, res) => res.status(404).json({ success: false, message: 'API Route not found' }));
-
-    // React router catch-all
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
-    });
-} else {
-    // Dev 404
-    app.use((req, res) => res.status(404).json({ success: false, message: 'Route not found' }));
-}
+// 404
+app.use((req, res) => res.status(404).json({ success: false, message: 'Route not found' }));
 
 // Error Handler
 app.use(errorHandler);

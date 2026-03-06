@@ -9,7 +9,6 @@
     "dev:client": "npm run dev --prefix client",
     "install:all": "npm install && npm install --prefix server && npm install --prefix client",
     "build": "npm run build --prefix client",
-    "build:all": "npm run install:all && npm run build",
     "seed": "node server/seeds/seedData.js",
     "start": "npm start --prefix server"
   },
