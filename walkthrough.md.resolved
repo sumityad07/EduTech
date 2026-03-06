@@ -1,0 +1,68 @@
+# EduStream Frontend — Complete Build Walkthrough
+
+## 🎨 Design System (Yellow / Black / White)
+
+| Token | Value | Usage |
+|---|---|---|
+| `brand-400` | `#facc15` (yellow) | Buttons, active links, accent, badges |
+| `dark-900` | `#111111` | Page background |
+| `dark-800` | `#1a1a1a` | Cards |
+| `dark-700` | `#222222` | Hover states, inputs |
+| `dark-600` | `#2a2a2a` | Borders |
+| `white` | `#ffffff` | Primary text, headings |
+
+---
+
+## ✅ Pages Built
+
+### Auth
+| Page | Features |
+|---|---|
+| **Login** | Email + password, show/hide password, demo login buttons (Student/Admin) |
+| **Register** | First/last name, password strength indicator |
+
+### Student Portal (9 pages)
+| Page | Features |
+|---|---|
+| **Dashboard** | Stats cards (4), enrolled courses list with progress, alerts feed, quiz history |
+| **Courses** | Filter by category/difficulty/search, enroll button, star rating, card grid |
+| **Lectures** | Course filter, embedded YouTube player, card grid with play button |
+| **Notes** | Course filter, file type icons, download button |
+| **Quizzes** | Two tabs (Available / History), timed quiz attempt flow with auto-submit, result screen with grade |
+| **Progress** | Per-course progress bars, quiz performance list |
+| **Analytics** | Chart.js: line (study hours), doughnut (pass rate), bar chart (quiz scores) |
+| **Sponsorships** | Type filter, deadline countdown, eligibility, apply button |
+| **Profile** | Profile tab (name/phone/bio) + Security tab (password change) |
+
+### Admin Portal (9 pages)
+| Page | Features |
+|---|---|
+| **Dashboard** | Stats cards, course category bar chart, alerts feed, course overview table |
+| **Courses** | Searchable table, publish/unpublish toggle, create/edit modal, delete |
+| **Assignments** | CRUD table, view submissions modal with inline grading |
+| **Video Links** | Card grid with platform badge, CRUD modal |
+| **Tests** | Card grid by status (Scheduled/Ongoing/Completed), CRUD with datetime-local |
+| **Question Bank** | Collapsible banks, questions with correct answer highlight, add question modal with MCQ builder |
+| **Performance** | 4 stats + searchable student table with grade labels |
+| **Students** | Paginated searchable table, detail modal with per-course progress |
+| **Settings** | Alerts tab (send/delete with type/priority/target) + Sponsorships tab |
+
+---
+
+## 🚀 Run the Frontend
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+**URL:** http://localhost:5173
+
+### Test Credentials
+| Role | Email | Password |
+|---|---|---|
+| Admin | `admin@edustream.com` | `Admin@123456` |
+| Student | `alice@student.com` | `Student@123` |
+
+> Click **Quick Demo** buttons on the login page to autofill credentials.

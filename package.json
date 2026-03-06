@@ -1,0 +1,19 @@
+{
+  "name": "visin1000",
+  "version": "1.0.0",
+  "description": "VisiN1000 — Production MERN Learning Platform",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "build": "npm run build --prefix client",
+    "build:all": "npm run install:all && npm run build",
+    "seed": "node server/seeds/seedData.js",
+    "start": "npm start --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
