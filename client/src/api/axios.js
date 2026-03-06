@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: '/api/v1',
+    baseURL: 'https://edutech-2-gcf8.onrender.com/api/v1',
     withCredentials: true,
     headers: { 'Content-Type': 'application/json' },
 });
