@@ -1,5 +1,5 @@
 {
-    "name": "visin1000-server",
+    "name": "edutech",
     "version": "1.0.0",
     "description": "VisiN1000 Express API Server",
     "main": "server.js",
