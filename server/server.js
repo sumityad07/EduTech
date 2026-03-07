@@ -28,15 +28,39 @@ connectDB();
 
 
 // Security Middleware
-app.use(helmet());
-const corsOrigin = process.env.NODE_ENV === 'production'
-    ? process.env.CLIENT_URL
-    : (origin, cb) => {
-        // Allow any localhost port in development (Vite may use 5173, 5174, 5176, etc.)
-        if (!origin || /^http:\/\/localhost:\d+$/.test(origin)) return cb(null, true);
-        cb(new Error('Not allowed by CORS'));
-    };
-app.use(cors({ origin: corsOrigin, credentials: true }));
+const cors = require('cors');
+
+// 1. Define allowed origins
+const allowedOrigins = [
+    'https://edu-tech-three-vert.vercel.app', // Your Vercel URL
+    /\.vercel\.app$/ // This allows any Vercel preview deployment
+];
+
+// 2. Configure CORS Options
+const corsOptions = {
+    origin: (origin, callback) => {
+        // Allow local development or your production URL
+        if (!origin || 
+            /^http:\/\/localhost:\d+$/.test(origin) || 
+            allowedOrigins.some(o => typeof o === 'string' ? o === origin : o.test(origin))
+        ) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+// 3. Apply Middleware
+app.use(cors(corsOptions));
+
+// 4. Adjust Helmet for Cross-Origin
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
 app.use(mongoSanitize());
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 200, message: 'Too many requests' }));
 
