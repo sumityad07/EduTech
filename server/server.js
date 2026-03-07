@@ -27,9 +27,6 @@ const app = express();
 connectDB();
 
 
-// Security Middleware
-const cors = require('cors');
-
 // 1. Define allowed origins
 const allowedOrigins = [
     'https://edu-tech-three-vert.vercel.app', // Your Vercel URL
