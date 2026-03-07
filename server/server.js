@@ -27,9 +27,6 @@ const app = express();
 connectDB();
 
 
-// Security Middleware
-const cors = require('cors');
-
 // 1. Define allowed origins
 const allowedOrigins = [
     'https://edu-tech-three-vert.vercel.app', // Your Vercel URL
@@ -40,8 +37,8 @@ const allowedOrigins = [
 const corsOptions = {
     origin: (origin, callback) => {
         // Allow local development or your production URL
-        if (!origin || 
-            /^http:\/\/localhost:\d+$/.test(origin) || 
+        if (!origin ||
+            /^http:\/\/localhost:\d+$/.test(origin) ||
             allowedOrigins.some(o => typeof o === 'string' ? o === origin : o.test(origin))
         ) {
             callback(null, true);

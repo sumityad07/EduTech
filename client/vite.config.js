@@ -11,5 +11,19 @@ export default defineConfig({
                 changeOrigin: true,
             }
         }
-    }
+    },
+    build: {
+        outDir: 'dist',
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    'react-vendor': ['react', 'react-dom'],
+                    'router-vendor': ['react-router-dom'],
+                    'axios-vendor': ['axios'],
+                    'chartjs-vendor': ['chart.js', 'react-chartjs-2'],
+                    'zustand-vendor': ['zustand'],
+                },
+            },
+        },
+    },
 })
